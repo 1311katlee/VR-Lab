@@ -4,21 +4,27 @@ public class PlayerInteraction : MonoBehaviour
 {
     public float interactDistance = 3f;
     public LayerMask interactableLayer;
+    private GameObject currentDial;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Left click
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, interactDistance, interactableLayer))
         {
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
+            currentDial = hit.collider.gameObject;
 
-            if (Physics.Raycast(ray, out hit, interactDistance, interactableLayer))
+            // Scroll wheel input
+            float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+            if (scrollInput != 0 && currentDial != null)
             {
-                Debug.Log("Hit Interactable: " + hit.transform.name);
-
-                // Example: Call Interact method on that object
-                hit.transform.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
+                currentDial.SendMessage("AdjustDial", scrollInput, SendMessageOptions.DontRequireReceiver);
             }
+        }
+        else
+        {
+            currentDial = null;
         }
     }
 }
