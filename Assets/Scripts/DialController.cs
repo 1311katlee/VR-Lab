@@ -2,14 +2,12 @@
 
 public class DialController : MonoBehaviour
 {
-    public float sensitivity = 1.0f;
+    public float sensitivity = 1.0f; // How fast RPM increases with scroll
     public float minRPM = 0f;
     public float maxRPM = 300f;
 
     [HideInInspector]
     public float currentRPM = 0f;
-
-    public bool isSelected = false;
 
     private float startYRotation;
 
@@ -18,26 +16,17 @@ public class DialController : MonoBehaviour
         startYRotation = transform.localEulerAngles.y;
     }
 
-    void Update()
+    public void AdjustDial(float scrollInput)
     {
-        if (isSelected)
-        {
-            float input = Input.GetAxis("Mouse X");
-            transform.Rotate(Vector3.up, input * sensitivity);
+        // Update RPM based on scroll direction
+        currentRPM += scrollInput * sensitivity;
+        currentRPM = Mathf.Clamp(currentRPM, minRPM, maxRPM);
 
-            float rawAngle = transform.localEulerAngles.y - startYRotation;
-            if (rawAngle < 0) rawAngle += 360f;
-            if (rawAngle > 180f) rawAngle -= 360f;
+        // Rotate the dial based on RPM (e.g., map RPM to 270 degrees of dial)
+        float t = Mathf.InverseLerp(minRPM, maxRPM, currentRPM);
+        float targetRotation = Mathf.Lerp(0f, 270f, t);
+        transform.localEulerAngles = new Vector3(0f, startYRotation + targetRotation, 0f);
 
-            float t = Mathf.InverseLerp(0f, 270f, Mathf.Clamp(rawAngle, 0f, 270f));
-            currentRPM = Mathf.Lerp(minRPM, maxRPM, t);
-        }
-    }
-
-    // 👇 This is what SendMessage is calling
-    public void Interact()
-    {
-        isSelected = !isSelected;
-        Debug.Log("Dial selected: " + isSelected);
+        Debug.Log("Dial RPM: " + currentRPM);
     }
 }
