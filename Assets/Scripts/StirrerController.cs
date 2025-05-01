@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class StirrerController : MonoBehaviour
 {
-    public DialController dial;
+    public DialToRPM dialReference;  // Drag the dial GameObject here
+    public Vector3 rotationAxis = Vector3.up;
 
     void Update()
     {
-        float rpm = dial.currentRPM;
-        float degreesPerSecond = rpm * 6f; // 1 RPM = 6 degrees/sec
-        transform.Rotate(Vector3.up, degreesPerSecond * Time.deltaTime);
+        if (dialReference != null)
+        {
+            float rpm = dialReference.currentRPM;
+            float degreesPerSecond = rpm * 6f; // 360 degrees * RPM / 60
+            transform.Rotate(rotationAxis, degreesPerSecond * Time.deltaTime);
+        }
     }
 }

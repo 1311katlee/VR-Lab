@@ -2,31 +2,20 @@
 
 public class DialController : MonoBehaviour
 {
-    public float sensitivity = 1.0f; // How fast RPM increases with scroll
     public float minRPM = 0f;
     public float maxRPM = 300f;
+    public StirrerController stirrer; // Assign this in Inspector
 
-    [HideInInspector]
-    public float currentRPM = 0f;
-
-    private float startYRotation;
-
-    void Start()
+    void Update()
     {
-        startYRotation = transform.localEulerAngles.y;
-    }
+        float yRotation = transform.localEulerAngles.y;
+        if (yRotation > 180f) yRotation -= 360f; // Normalize angle
 
-    public void AdjustDial(float scrollInput)
-    {
-        // Update RPM based on scroll direction
-        currentRPM += scrollInput * sensitivity;
-        currentRPM = Mathf.Clamp(currentRPM, minRPM, maxRPM);
+        // Clamp to expected dial range (0 to 270 degrees)
+        float clampedY = Mathf.Clamp(yRotation, 0f, 270f);
+        float t = clampedY / 270f;
 
-        // Rotate the dial based on RPM (e.g., map RPM to 270 degrees of dial)
-        float t = Mathf.InverseLerp(minRPM, maxRPM, currentRPM);
-        float targetRotation = Mathf.Lerp(0f, 270f, t);
-        transform.localEulerAngles = new Vector3(0f, startYRotation + targetRotation, 0f);
-
-        Debug.Log("Dial RPM: " + currentRPM);
+        float rpm = Mathf.Lerp(minRPM, maxRPM, t);
+        //stirrer.SetRPM(rpm);
     }
 }
