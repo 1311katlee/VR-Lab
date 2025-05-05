@@ -6,6 +6,8 @@ public class DialToRPM : MonoBehaviour
     public float maxAngle = 270f;
     public float minRPM = 0f;
     public float maxRPM = 300f;
+    public float snapIncrement = 50f; // RPM steps
+    public float snapThreshold = 5f;  // How close it must be to snap
 
     [HideInInspector]
     public float currentRPM = 0f;
@@ -14,16 +16,23 @@ public class DialToRPM : MonoBehaviour
     {
         float rawAngle = transform.localEulerAngles.x;
 
-        // Handle wrap-around
+        // Normalize angle
         if (rawAngle > 180f) rawAngle -= 360f;
-
-        // Clamp angle to valid dial range
         float clampedAngle = Mathf.Clamp(rawAngle, minAngle, maxAngle);
 
-        // Map angle to RPM
+        // Convert angle to raw RPM
         float t = Mathf.InverseLerp(minAngle, maxAngle, clampedAngle);
-        currentRPM = Mathf.Lerp(minRPM, maxRPM, t);
+        float targetRPM = Mathf.Lerp(minRPM, maxRPM, t);
 
-        Debug.Log("Dial Angle: " + rawAngle + " -> RPM: " + currentRPM);
+        // Snap logic
+        float snappedRPM = Mathf.Round(targetRPM / snapIncrement) * snapIncrement;
+
+        // If close enough to a snap point, use snapped; else use raw RPM
+        if (Mathf.Abs(snappedRPM - targetRPM) <= snapThreshold)
+            currentRPM = snappedRPM;
+        else
+            currentRPM = targetRPM;
+
+        Debug.Log("Final RPM: " + currentRPM);
     }
 }
