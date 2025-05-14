@@ -2,23 +2,25 @@ using UnityEngine;
 
 public class LiquidController : MonoBehaviour
 {
-    public Transform stirrer; // Assign the stirrer pivot
-    public Material liquidMaterial; // Optional: assign the liquid material
-    public float minHeight = 0.1f; // Minimum scale on Y
-    public float maxHeight = 1f;   // Max scale on Y
+    public Material liquidMaterial; // Assign the liquid material
+    public float minHeight = 0.1f;  // Minimum scale on Y
+    public float maxHeight = 1f;    // Maximum scale on Y
 
     public float minRPM = 0f;
-    public float maxRPM = 300f;  // Maximum RPM (no clamp here, we're allowing it to go higher than 26)
+    public float maxRPM = 300f;
 
-    public float rpmThreshold = 26f;  // Set the RPM threshold for color change
-    public Color lowTurbidityColor = new Color(0.6f, 0.85f, 1f); // Light blue
+    public float rpmThreshold = 100f;
+    public Color lowTurbidityColor = new Color(0.6f, 0.85f, 1f);  // Light blue
     public Color highTurbidityColor = new Color(0.4f, 0.4f, 0.4f); // Muddy gray
 
-    private DialToRPM rpmSource;
+    public RPMManager rpmManager; // Assign this in the Inspector
 
     void Start()
     {
-        rpmSource = stirrer.GetComponent<DialToRPM>();
+        if (rpmManager == null)
+        {
+            Debug.LogError("RPMManager reference is missing on LiquidController!");
+        }
         if (liquidMaterial == null)
         {
             Debug.LogError("Liquid Material is not assigned!");
@@ -27,50 +29,24 @@ public class LiquidController : MonoBehaviour
 
     void Update()
     {
-        if (rpmSource != null)
+        if (rpmManager != null)
         {
-            float rpm = rpmSource.currentRPM;
+            float rpm = rpmManager.GetRPM();
 
-            // Log RPM value to debug
-            Debug.Log("Current RPM: " + rpm);
-
-            // Simulate height change based on RPM, scaling height from minHeight to maxHeight
+            // Height change based on RPM
             float heightT = Mathf.InverseLerp(minRPM, maxRPM, rpm);
-            Debug.Log("HeightT: " + heightT);  // Debugging output
-
-            // Calculate new height (higher RPM = lower level)
             float newHeight = Mathf.Lerp(minHeight, maxHeight, 1 - heightT);
+
             Vector3 newScale = transform.localScale;
             newScale.y = newHeight;
             transform.localScale = newScale;
 
-            // Change liquid color when RPM crosses the threshold
+            // Color change based on threshold
             if (liquidMaterial != null)
             {
-                Color newColor;
-
-                // Log the comparison result of RPM and the threshold
-                Debug.Log("RPM Threshold: " + rpmThreshold);
-                Debug.Log("Is RPM above threshold? " + (rpm > rpmThreshold)); // Debug the condition
-
-                if (rpm > rpmThreshold) // If RPM exceeds threshold
-                {
-                    newColor = lowTurbidityColor; // Set color to low turbidity color
-                    Debug.Log("Color Change: Low Turbidity");  // Debugging output
-                }
-                else
-                {
-                    newColor = highTurbidityColor; // Otherwise, set it to high turbidity color
-                    Debug.Log("Color Change: High Turbidity");  // Debugging output
-                }
-
+                Color newColor = (rpm > rpmThreshold) ? lowTurbidityColor : highTurbidityColor;
                 liquidMaterial.color = newColor;
-                Debug.Log("New Color: " + newColor);  // Debugging output
             }
-        }
-        else
-        {
-            Debug.LogError("RPM Source (DialToRPM) not found on stirrer.");
         }
     }
 }
