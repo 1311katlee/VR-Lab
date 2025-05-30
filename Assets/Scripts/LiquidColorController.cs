@@ -34,12 +34,12 @@ public class LiquidController : MonoBehaviour
             float rpm = rpmManager.GetRPM();
 
             // Height change based on RPM
-            float heightT = Mathf.InverseLerp(minRPM, maxRPM, rpm);
-            float newHeight = Mathf.Lerp(minHeight, maxHeight, 1 - heightT);
+            //float heightT = Mathf.InverseLerp(minRPM, maxRPM, rpm);
+            //float newHeight = Mathf.Lerp(minHeight, maxHeight, 1 - heightT);
 
-            Vector3 newScale = transform.localScale;
-            newScale.y = newHeight;
-            transform.localScale = newScale;
+            //Vector3 newScale = transform.localScale;
+            //newScale.y = newHeight;
+            //transform.localScale = newScale;
 
             // Color change based on threshold
             if (liquidMaterial != null)

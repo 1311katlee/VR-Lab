@@ -3,14 +3,15 @@ using TMPro;
 
 public class RPMDisplayUI : MonoBehaviour
 {
-    public DialToRPM dial; // Assign your dial GameObject here
+    public RPMManager rpmManager; // Drag your RPMManager object in the Inspector
     public TextMeshProUGUI rpmText;
 
     void Update()
     {
-        if (dial != null && rpmText != null)
+        if (rpmManager != null && rpmText != null)
         {
-            rpmText.text = $"Stirrer RPM: {dial.currentRPM:F0}";
+            float rpm = rpmManager.GetRPM();
+            rpmText.text = $"Stirrer RPM: {rpm:F0}";
         }
     }
 }
