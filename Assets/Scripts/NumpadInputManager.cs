@@ -4,7 +4,7 @@ using TMPro;
 public class NumpadInputManager : MonoBehaviour
 {
     public TMP_InputField inputField;
-    public RPMManager rpmManager; // assign in Inspector
+    public StirrerRotator[] stirrers;
     public float maxRPM = 300f;
 
     public void PressNumber(string number)
@@ -25,7 +25,10 @@ public class NumpadInputManager : MonoBehaviour
         if (float.TryParse(inputField.text, out float rpm))
         {
             rpm = Mathf.Clamp(rpm, 0f, maxRPM);
-            rpmManager.SetRPM(rpm);
+            foreach (StirrerRotator stirrer in stirrers)
+            {
+                stirrer.SetRPM(rpm);
+            }
             Debug.Log("RPM set to: " + rpm);
         }
         else
@@ -36,12 +39,4 @@ public class NumpadInputManager : MonoBehaviour
         inputField.text = "";
     }
 
-    // Optional: hook this up to a separate submit button if needed
-    public void OnNumpadSubmit(string input)
-    {
-        if (float.TryParse(input, out float rpmValue))
-        {
-            rpmManager.SetRPM(rpmValue);
-        }
-    }
 }

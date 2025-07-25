@@ -1,17 +1,44 @@
 using UnityEngine;
 
-public class RPMManager : MonoBehaviour
+public class RPMInputManager : MonoBehaviour
 {
-    public float currentRPM = 0f;
+    public JarController[] jars; // Assign in inspector
+    private int selectedJarIndex = 0;
 
-    public void SetRPM(float rpm)
-    {
-        currentRPM = Mathf.Clamp(rpm, 0f, 300f); // Optional: clamp here
-        Debug.Log("RPMManager: RPM set to " + currentRPM);
-    }
+    private string inputBuffer = "";
 
-    public float GetRPM()
+    void Update()
     {
-        return currentRPM;
+        // Number key input
+        for (KeyCode k = KeyCode.Alpha0; k <= KeyCode.Alpha9; k++)
+        {
+            if (Input.GetKeyDown(k))
+            {
+                inputBuffer += (k - KeyCode.Alpha0).ToString();
+            }
+        }
+
+        // Enter to set RPM
+        if (Input.GetKeyDown(KeyCode.Return) && inputBuffer.Length > 0)
+        {
+            if (int.TryParse(inputBuffer, out int rpm))
+            {
+                jars[selectedJarIndex].SetRPM(rpm);
+            }
+            inputBuffer = "";
+        }
+
+        // Tab to switch jar selection
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            selectedJarIndex = (selectedJarIndex + 1) % jars.Length;
+            Debug.Log("Selected Jar: " + (selectedJarIndex + 1));
+        }
+
+        // Spacebar to start timer (example: 60 seconds)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jars[selectedJarIndex].StartMixing(60f); // you can modify duration as needed
+        }
     }
 }

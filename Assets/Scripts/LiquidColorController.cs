@@ -13,7 +13,7 @@ public class LiquidController : MonoBehaviour
     public Color lowTurbidityColor = new Color(0.6f, 0.85f, 1f);  // Light blue
     public Color highTurbidityColor = new Color(0.4f, 0.4f, 0.4f); // Muddy gray
 
-    public RPMManager rpmManager; // Assign this in the Inspector
+    public NumpadInputManager rpmManager; // Assign this in the Inspector
 
     void Start()
     {
