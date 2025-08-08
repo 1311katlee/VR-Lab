@@ -12,7 +12,7 @@ public class PipetteDosage : MonoBehaviour
 
     private bool isNearJar = false;
     private bool isNearAlumSource = false;
-    private JarDosageReceiver currentJar;
+    private JarReaction currentJar;
 
     private XRBaseInteractor interactor;
     private bool isDispensing = false;
@@ -69,7 +69,7 @@ public class PipetteDosage : MonoBehaviour
     {
         if (other.CompareTag("Jar"))
         {
-            currentJar = other.GetComponent<JarDosageReceiver>();
+            currentJar = other.GetComponent<JarReaction>();
             isNearJar = true;
         }
         else if (other.CompareTag("AlumJar")) // Make sure Alum bottle has this tag
