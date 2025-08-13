@@ -58,9 +58,10 @@ public class JarReaction : MonoBehaviour
     // Called when alum is added
     public void ReceiveAlum(float ml)
     {
+        if (ml <= 0f) return;
         CurrentAlumMl += ml;
+        flocSize += ml * 0.01f;
         float seed = ml * 0.01f; // instant microfloc seed proportional to dose
-        flocSize += seed;
         UpdateVolumeText();
     }
 
@@ -82,10 +83,14 @@ public class JarReaction : MonoBehaviour
         flocSize += growth - shearLoss - settlingLoss;
         flocSize = Mathf.Max(0f, flocSize);
 
-        float alumConsumed = growth * 0.5f;
-        CurrentAlumMl = Mathf.Max(0f, CurrentAlumMl - alumConsumed);
+        if (CurrentRPM > 100f)
+        {
+            float alumConsumed = growth * 0.5f;
+            CurrentAlumMl = Mathf.Max(0f, CurrentAlumMl - alumConsumed);
+        }
 
         turbidity = Mathf.Clamp01(flocSize / 2f);
+        UpdateVolumeText();
     }
 
     void SpawnSettledIfNeeded(float settledDelta)
@@ -123,6 +128,7 @@ public class JarReaction : MonoBehaviour
             float rate = Mathf.Clamp(flocSize * 50f, 0f, 500f);
             em.rateOverTime = rate;
         }
+        UpdateVolumeText();
     }
 
     void UpdateVolumeText()
