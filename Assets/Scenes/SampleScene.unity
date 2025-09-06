@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 49226425}
   - component: {fileID: 49226424}
   m_Layer: 0
-  m_Name: FlocParticles - Small
+  m_Name: ph floc small 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d517872d7c87e4b84b7d9345418fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stirrer: {fileID: 1236772602}
+  stirrer: {fileID: 1533431604}
   alumDose: 0
   minimumDoseForFlocculation: 1
   rapidMixMinRPM: 80
@@ -11791,7 +11791,7 @@ GameObject:
   - component: {fileID: 498893445}
   - component: {fileID: 498893444}
   m_Layer: 0
-  m_Name: FlocParticles - Small
+  m_Name: ph floc small 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11824,7 +11824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d517872d7c87e4b84b7d9345418fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stirrer: {fileID: 1236772602}
+  stirrer: {fileID: 568106793}
   alumDose: 0
   minimumDoseForFlocculation: 1
   rapidMixMinRPM: 80
@@ -17411,7 +17411,7 @@ GameObject:
   - component: {fileID: 568106793}
   - component: {fileID: 568106794}
   m_Layer: 0
-  m_Name: StirrerPivot6
+  m_Name: StirrerPivot6 ph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17528,7 +17528,7 @@ GameObject:
   - component: {fileID: 595746238}
   - component: {fileID: 595746237}
   m_Layer: 0
-  m_Name: JarText1
+  m_Name: ph text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19656,7 +19656,7 @@ GameObject:
   - component: {fileID: 754065755}
   - component: {fileID: 754065754}
   m_Layer: 0
-  m_Name: FlocParticles - Small
+  m_Name: ph floc small 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19689,7 +19689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d517872d7c87e4b84b7d9345418fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stirrer: {fileID: 1236772602}
+  stirrer: {fileID: 2125409700}
   alumDose: 0
   minimumDoseForFlocculation: 1
   rapidMixMinRPM: 80
@@ -24851,7 +24851,7 @@ GameObject:
   - component: {fileID: 766310287}
   - component: {fileID: 766310286}
   m_Layer: 0
-  m_Name: JarText1
+  m_Name: ph text 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25471,7 +25471,7 @@ GameObject:
   - component: {fileID: 822765192}
   - component: {fileID: 822765193}
   m_Layer: 0
-  m_Name: StirrerPivot3
+  m_Name: StirrerPivot3 ph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26103,7 +26103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.17
+      value: -1.16
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28019,7 +28019,7 @@ GameObject:
   - component: {fileID: 964983228}
   - component: {fileID: 964983227}
   m_Layer: 0
-  m_Name: JarText1
+  m_Name: ph text 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29558,7 +29558,7 @@ MonoBehaviour:
   phText: {fileID: 1875315939}
   rpmManager: {fileID: 1814812676}
   simulationTimeScale: 1
-  CurrentPH: 7
+  CurrentPH: 6
 --- !u!1 &1020495116
 GameObject:
   m_ObjectHideFlags: 0
@@ -29808,7 +29808,7 @@ GameObject:
   - component: {fileID: 1037779176}
   - component: {fileID: 1037779175}
   m_Layer: 0
-  m_Name: JarText1
+  m_Name: ph text 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31178,7 +31178,7 @@ GameObject:
   - component: {fileID: 1132515662}
   - component: {fileID: 1132515661}
   m_Layer: 0
-  m_Name: FlocParticles - Small
+  m_Name: ph floc small 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31211,7 +31211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d517872d7c87e4b84b7d9345418fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stirrer: {fileID: 1236772602}
+  stirrer: {fileID: 1781508531}
   alumDose: 0
   minimumDoseForFlocculation: 1
   rapidMixMinRPM: 80
@@ -37421,7 +37421,7 @@ GameObject:
   - component: {fileID: 1236772602}
   - component: {fileID: 1236772603}
   m_Layer: 0
-  m_Name: StirrerPivot1
+  m_Name: StirrerPivot1 ph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40202,7 +40202,7 @@ MonoBehaviour:
   phText: {fileID: 964983227}
   rpmManager: {fileID: 1814812676}
   simulationTimeScale: 1
-  CurrentPH: 7
+  CurrentPH: 8
 --- !u!43 &1444947140
 Mesh:
   m_ObjectHideFlags: 0
@@ -40994,7 +40994,7 @@ GameObject:
   - component: {fileID: 1533431604}
   - component: {fileID: 1533431605}
   m_Layer: 0
-  m_Name: StirrerPivot5
+  m_Name: StirrerPivot5 ph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42427,6 +42427,10 @@ PrefabInstance:
       propertyPath: rpmManager
       value: 
       objectReference: {fileID: 1814812676}
+    - target: {fileID: 7195199812079191992, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+      propertyPath: m_Name
+      value: ph floc small 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8353087088461271896, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.103
@@ -42502,7 +42506,7 @@ MonoBehaviour:
   phText: {fileID: 1037779175}
   rpmManager: {fileID: 1814812676}
   simulationTimeScale: 1
-  CurrentPH: 7
+  CurrentPH: 2
 --- !u!1 &1647225372
 GameObject:
   m_ObjectHideFlags: 0
@@ -42822,7 +42826,7 @@ MonoBehaviour:
   phText: {fileID: 1879871587}
   rpmManager: {fileID: 1814812676}
   simulationTimeScale: 1
-  CurrentPH: 7
+  CurrentPH: 14
 --- !u!4 &1658243105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 46272ef41e8f8e34ea52729c50096c0c, type: 3}
@@ -44624,7 +44628,7 @@ GameObject:
   - component: {fileID: 1781508531}
   - component: {fileID: 1781508532}
   m_Layer: 0
-  m_Name: StirrerPivot4
+  m_Name: StirrerPivot4 ph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44861,7 +44865,7 @@ MonoBehaviour:
   phText: {fileID: 595746237}
   rpmManager: {fileID: 1814812676}
   simulationTimeScale: 1
-  CurrentPH: 7
+  CurrentPH: 4
 --- !u!43 &1792118897
 Mesh:
   m_ObjectHideFlags: 0
@@ -45830,7 +45834,7 @@ GameObject:
   - component: {fileID: 1875315940}
   - component: {fileID: 1875315939}
   m_Layer: 0
-  m_Name: JarText1
+  m_Name: ph text 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46006,7 +46010,7 @@ GameObject:
   - component: {fileID: 1879871588}
   - component: {fileID: 1879871587}
   m_Layer: 0
-  m_Name: JarText1
+  m_Name: ph text 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46991,7 +46995,7 @@ GameObject:
   - component: {fileID: 1931759495}
   - component: {fileID: 1931759494}
   m_Layer: 0
-  m_Name: FlocParticles - Small
+  m_Name: ph floc small 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47024,7 +47028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d517872d7c87e4b84b7d9345418fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stirrer: {fileID: 1236772602}
+  stirrer: {fileID: 822765192}
   alumDose: 0
   minimumDoseForFlocculation: 1
   rapidMixMinRPM: 80
@@ -53239,7 +53243,7 @@ MonoBehaviour:
   phText: {fileID: 766310286}
   rpmManager: {fileID: 1814812676}
   simulationTimeScale: 1
-  CurrentPH: 7
+  CurrentPH: 12
 --- !u!4 &1998003588 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6114783845091147165, guid: 97c5167bd0a8a5147ba63117a629fbf7, type: 3}
@@ -54173,7 +54177,7 @@ GameObject:
   - component: {fileID: 2125409700}
   - component: {fileID: 2125409701}
   m_Layer: 0
-  m_Name: StirrerPivot2
+  m_Name: StirrerPivot2 ph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
