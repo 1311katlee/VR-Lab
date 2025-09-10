@@ -181,7 +181,7 @@ public class pHJar : MonoBehaviour
     void UpdatePHText()
     {
         if (phText != null)
-            phText.text = "pH: " + CurrentPH.ToString("F1");
+            phText.text = CurrentPH.ToString("F1");
     }
 
     // --- pH controls ---

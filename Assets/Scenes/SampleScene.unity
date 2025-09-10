@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 49226426}
   - component: {fileID: 49226425}
   - component: {fileID: 49226424}
+  - component: {fileID: 49226427}
   m_Layer: 0
   m_Name: ph floc small 5
   m_TagString: Untagged
@@ -619,7 +620,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49226422}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0d517872d7c87e4b84b7d9345418fc9, type: 3}
   m_Name: 
@@ -5439,6 +5440,33 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &49226427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49226422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39dd75f1899b7e4398808f839eef3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stirrer: {fileID: 1533431604}
+  jarReaction: {fileID: 1992404316}
+  optimalMinPH: 6
+  optimalMaxPH: 8
+  rapidMixMinRPM: 80
+  rapidMixMaxRPM: 120
+  slowMixMinRPM: 20
+  slowMixMaxRPM: 50
+  rapidMixDuration: 120
+  slowMixDuration: 1200
+  baseRate: 5
+  rateMultiplier: 0.3
+  rapidMixLifetime: 0.5
+  slowMixLifetime: 3
+  settlingLifetime: 8
 --- !u!1 &55402619 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 202364687, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
@@ -11790,6 +11818,7 @@ GameObject:
   - component: {fileID: 498893446}
   - component: {fileID: 498893445}
   - component: {fileID: 498893444}
+  - component: {fileID: 498893447}
   m_Layer: 0
   m_Name: ph floc small 6
   m_TagString: Untagged
@@ -11819,7 +11848,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498893442}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0d517872d7c87e4b84b7d9345418fc9, type: 3}
   m_Name: 
@@ -16639,6 +16668,33 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &498893447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498893442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39dd75f1899b7e4398808f839eef3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stirrer: {fileID: 568106793}
+  jarReaction: {fileID: 1653127514}
+  optimalMinPH: 6
+  optimalMaxPH: 8
+  rapidMixMinRPM: 80
+  rapidMixMaxRPM: 120
+  slowMixMinRPM: 20
+  slowMixMaxRPM: 50
+  rapidMixDuration: 120
+  slowMixDuration: 1200
+  baseRate: 5
+  rateMultiplier: 0.3
+  rapidMixLifetime: 0.5
+  slowMixLifetime: 3
+  settlingLifetime: 8
 --- !u!1 &499318259
 GameObject:
   m_ObjectHideFlags: 0
@@ -19655,6 +19711,7 @@ GameObject:
   - component: {fileID: 754065756}
   - component: {fileID: 754065755}
   - component: {fileID: 754065754}
+  - component: {fileID: 754065757}
   m_Layer: 0
   m_Name: ph floc small 2
   m_TagString: Untagged
@@ -19684,7 +19741,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754065752}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0d517872d7c87e4b84b7d9345418fc9, type: 3}
   m_Name: 
@@ -24504,6 +24561,33 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &754065757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754065752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39dd75f1899b7e4398808f839eef3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stirrer: {fileID: 2125409700}
+  jarReaction: {fileID: 1789716827}
+  optimalMinPH: 6
+  optimalMaxPH: 8
+  rapidMixMinRPM: 80
+  rapidMixMaxRPM: 120
+  slowMixMinRPM: 20
+  slowMixMaxRPM: 50
+  rapidMixDuration: 120
+  slowMixDuration: 1200
+  baseRate: 5
+  rateMultiplier: 0.3
+  rapidMixLifetime: 0.5
+  slowMixLifetime: 3
+  settlingLifetime: 8
 --- !u!1001 &755909945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30555,6 +30639,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067978836}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1070873468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7195199812079191992, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 1619660150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1083562459
 GameObject:
   m_ObjectHideFlags: 0
@@ -31177,6 +31266,7 @@ GameObject:
   - component: {fileID: 1132515663}
   - component: {fileID: 1132515662}
   - component: {fileID: 1132515661}
+  - component: {fileID: 1132515664}
   m_Layer: 0
   m_Name: ph floc small 4
   m_TagString: Untagged
@@ -31206,7 +31296,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132515659}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0d517872d7c87e4b84b7d9345418fc9, type: 3}
   m_Name: 
@@ -36026,6 +36116,33 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1132515664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132515659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39dd75f1899b7e4398808f839eef3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stirrer: {fileID: 1781508531}
+  jarReaction: {fileID: 1434238556}
+  optimalMinPH: 6
+  optimalMaxPH: 8
+  rapidMixMinRPM: 80
+  rapidMixMaxRPM: 120
+  slowMixMinRPM: 20
+  slowMixMaxRPM: 50
+  rapidMixDuration: 120
+  slowMixDuration: 1200
+  baseRate: 5
+  rateMultiplier: 0.3
+  rapidMixLifetime: 0.5
+  slowMixLifetime: 3
+  settlingLifetime: 8
 --- !u!1 &1134413429
 GameObject:
   m_ObjectHideFlags: 0
@@ -42444,6 +42561,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1236772602}
     - target: {fileID: 9023227421670140095, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023227421670140095, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: slowMixDuration
       value: 20
       objectReference: {fileID: 0}
@@ -42466,6 +42587,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4662148318433859677, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1619660162}
+    - targetCorrespondingSourceObject: {fileID: 7195199812079191992, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1619660156}
   m_SourcePrefab: {fileID: 100100000, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
 --- !u!4 &1619660151 stripped
 Transform:
@@ -42477,6 +42601,33 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 9018533377268208009, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
   m_PrefabInstance: {fileID: 1619660150}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1619660156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070873468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39dd75f1899b7e4398808f839eef3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stirrer: {fileID: 1236772602}
+  jarReaction: {fileID: 1619660162}
+  optimalMinPH: 6
+  optimalMaxPH: 8
+  rapidMixMinRPM: 80
+  rapidMixMaxRPM: 120
+  slowMixMinRPM: 20
+  slowMixMaxRPM: 50
+  rapidMixDuration: 120
+  slowMixDuration: 1200
+  baseRate: 5
+  rateMultiplier: 0.3
+  rapidMixLifetime: 0.5
+  slowMixLifetime: 3
+  settlingLifetime: 8
 --- !u!114 &1619660162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46994,6 +47145,7 @@ GameObject:
   - component: {fileID: 1931759496}
   - component: {fileID: 1931759495}
   - component: {fileID: 1931759494}
+  - component: {fileID: 1931759497}
   m_Layer: 0
   m_Name: ph floc small 3
   m_TagString: Untagged
@@ -47023,7 +47175,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931759492}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0d517872d7c87e4b84b7d9345418fc9, type: 3}
   m_Name: 
@@ -51843,6 +51995,33 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1931759497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931759492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39dd75f1899b7e4398808f839eef3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stirrer: {fileID: 822765192}
+  jarReaction: {fileID: 1010816175}
+  optimalMinPH: 6
+  optimalMaxPH: 8
+  rapidMixMinRPM: 80
+  rapidMixMaxRPM: 120
+  slowMixMinRPM: 20
+  slowMixMaxRPM: 50
+  rapidMixDuration: 120
+  slowMixDuration: 1200
+  baseRate: 5
+  rateMultiplier: 0.3
+  rapidMixLifetime: 0.5
+  slowMixLifetime: 3
+  settlingLifetime: 8
 --- !u!1 &1939606961
 GameObject:
   m_ObjectHideFlags: 0
