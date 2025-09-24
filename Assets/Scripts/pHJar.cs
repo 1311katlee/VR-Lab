@@ -1,38 +1,39 @@
-// JarReaction.cs
-// Version without alum, with pH added
+// pHJar.cs
+// Version without alum, with realistic pH behavior
 
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(MeshRenderer))]
 public class pHJar : MonoBehaviour
 {
     [Header("State")]
-    public float CurrentRPM = 0f;            // stir speed from stirrer
-    public float WaterVolumeMl = 1000f;      // jar volume (1000 ml)
+    public float CurrentRPM = 0f;
+    public float WaterVolumeMl = 1000f;
 
     [Header("Jar Test Parameters")]
     public float rapidMixMinRPM = 80f;
     public float rapidMixMaxRPM = 120f;
     public float slowMixMinRPM = 20f;
     public float slowMixMaxRPM = 50f;
-    public float rapidMixDuration = 120f;    // 2 minutes
-    public float slowMixDuration = 1200f;    // 20 minutes
+    public float rapidMixDuration = 120f;
+    public float slowMixDuration = 1200f;
 
-    [Header("Reaction params (tweak)")]
+    [Header("Reaction Params (tweak)")]
     public float growthRate = 0.6f;
     public float shearFactor = 0.01f;
     public float coalescenceRate = 0.2f;
     public float settlingThreshold = 0.5f;
 
     [Header("Visuals")]
-    public ParticleSystem flocParticleSystem; // particles for flocs
-    public Renderer waterRenderer;            // water material
-    public TMP_Text phText;                   // UI text to display pH
+    public ParticleSystem flocParticleSystem;
+    public Renderer waterRenderer;
+    public TMP_Text phText;
 
     [Header("References")]
-    public RPMManager rpmManager;             // assign in Inspector
+    public RPMManager rpmManager;
 
-    [Header("Auto time scale")]
+    [Header("Auto Time Scale")]
     public float simulationTimeScale = 1f;
 
     // Internal state
@@ -111,68 +112,61 @@ public class pHJar : MonoBehaviour
 
     void SimulateReaction(float dt)
     {
-        float doseFactor = 1f; // since no alum, base factor is constant
+        if (flocParticleSystem == null) return;
 
-        float phaseGrowthMultiplier = 1f;
-        float phaseShearMultiplier = 1f;
+        var main = flocParticleSystem.main;
+        var emission = flocParticleSystem.emission;
 
-        switch (currentPhase)
+        // Gaussian-like efficiency curve, peak near pH 7
+        float efficiency = Mathf.Exp(-Mathf.Pow((CurrentPH - 7f) / 2f, 2f));
+
+        // Floc growth (depends on mixing and efficiency)
+        if (currentPhase == JarTestPhase.RapidMix || currentPhase == JarTestPhase.SlowMix)
         {
-            case JarTestPhase.Idle: phaseGrowthMultiplier = 0.1f; phaseShearMultiplier = 0f; break;
-            case JarTestPhase.RapidMix: phaseGrowthMultiplier = 2f; phaseShearMultiplier = 2f; break;
-            case JarTestPhase.SlowMix: phaseGrowthMultiplier = 1.5f; phaseShearMultiplier = 0.5f; break;
-            case JarTestPhase.Settling: phaseGrowthMultiplier = 0.2f; phaseShearMultiplier = 0f; break;
+            flocSize += growthRate * efficiency * dt;
+            flocSize = Mathf.Clamp01(flocSize);
         }
 
-        // pH efficiency (best range ~6–8.5)
-        float phEfficiency = Mathf.Clamp01(1f - Mathf.Abs(CurrentPH - 7.5f) / 5f);
+        // Shear effect at very high RPM
+        if (CurrentRPM > rapidMixMaxRPM)
+            flocSize = Mathf.Max(0f, flocSize - shearFactor * dt);
 
-        float growth = growthRate * doseFactor * (1f + coalescenceRate * flocSize) * dt * phaseGrowthMultiplier * phEfficiency;
-        float shearLoss = shearFactor * CurrentRPM * flocSize * dt * phaseShearMultiplier;
+        // Turbidity is proportional to floc size but decreases when settling
+        if (currentPhase == JarTestPhase.Settling)
+            turbidity = Mathf.Lerp(turbidity, 0f, dt * 0.05f);
+        else
+            turbidity = Mathf.Clamp01(flocSize);
 
-        float settlingLoss = 0f;
-        if (flocSize > settlingThreshold)
-        {
-            float settlingMultiplier = (currentPhase == JarTestPhase.Settling) ? 3f : 1f;
-            settlingLoss = (flocSize - settlingThreshold) * 0.1f * dt * settlingMultiplier;
-        }
+        // --- Particle Size ---
+        float size = Mathf.Lerp(0.2f, 1.0f, efficiency);
+        main.startSize = size;
 
-        flocSize += growth - shearLoss - settlingLoss;
-        flocSize = Mathf.Max(0f, flocSize);
+        // --- Particle Lifetime ---
+        float lifetime = Mathf.Lerp(2f, 6f, efficiency);
+        main.startLifetime = lifetime;
 
-        turbidity = Mathf.Clamp01(flocSize / 2f);
+        // --- Emission Rate ---
+        float baseRate = 5f;
+        float rate = baseRate + (efficiency * 50f * flocSize);
+        emission.rateOverTime = rate;
+
+        // --- Particle Color ---
+        Color baseColor = Color.white;
+        float alpha = Mathf.Lerp(0.2f, 1.0f, efficiency);
+        main.startColor = new Color(baseColor.r, baseColor.g, baseColor.b, alpha);
+
+        // Debug
+        Debug.Log($"[pHJar] Phase={currentPhase}, pH={CurrentPH}, Eff={efficiency:F2}, Floc={flocSize:F2}, Turb={turbidity:F2}, Rate={rate:F1}");
     }
 
     void UpdateVisuals()
     {
-        // Water color based on turbidity
         if (waterRenderer != null)
         {
             Material mat = waterRenderer.material;
             Color clean = new Color(0.7f, 0.7f, 0.85f, 0.6f);
             Color cloudy = new Color(0.2f, 0.4f, 0.9f, 0.8f);
             mat.SetColor("_BaseColor", Color.Lerp(clean, cloudy, turbidity));
-        }
-
-        // Particle system
-        if (flocParticleSystem != null)
-        {
-            var em = flocParticleSystem.emission;
-            var main = flocParticleSystem.main;
-
-            float baseRate = 0f;
-            float lifetime = 1f;
-
-            switch (currentPhase)
-            {
-                case JarTestPhase.Idle: baseRate = 0f; lifetime = 1f; break;
-                case JarTestPhase.RapidMix: baseRate = flocSize * 30f; lifetime = 0.5f; break;
-                case JarTestPhase.SlowMix: baseRate = flocSize * 40f; lifetime = 3f; break;
-                case JarTestPhase.Settling: baseRate = flocSize * 15f; lifetime = 8f; break;
-            }
-
-            em.rateOverTime = Mathf.Clamp(baseRate, 0f, 500f);
-            main.startLifetime = lifetime;
         }
 
         UpdatePHText();
@@ -184,7 +178,7 @@ public class pHJar : MonoBehaviour
             phText.text = CurrentPH.ToString("F1");
     }
 
-    // --- pH controls ---
+    // Public API
     public void SetPH(float value) { CurrentPH = Mathf.Clamp(value, 0f, 14f); }
     public float GetPH() { return CurrentPH; }
     public JarTestPhase GetCurrentPhase() { return currentPhase; }
