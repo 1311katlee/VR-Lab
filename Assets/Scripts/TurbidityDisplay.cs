@@ -6,18 +6,23 @@ public class TurbidityDisplay : MonoBehaviour
     [Header("Target Jar")]
     [Tooltip("Assign the jar GameObject that has either JarReaction or pHJar component")]
     public GameObject targetJar;
-    
+
     [Header("Display Settings")]
     public string prefix = "Turbidity: ";
-    public string suffix = "%";
+    public string suffix = " NTU";
     public int decimalPlaces = 1;
-    
+
+    [Header("NTU Conversion (for normalized jars)")]
+    [Tooltip("Initial turbidity of raw water in NTU (used only if jar reports normalized turbidity)")]
+    public float initialTurbidityNTU = 100f;
+
     [Header("Text Component (Auto-detected if empty)")]
     public TextMeshPro textMesh;
-    
+
+    // Cached components
     private JarReaction alumJar;
-    private MonoBehaviour pHJarComponent;
-    
+    private pHJar phJar;
+
     void Start()
     {
         // Auto-detect TextMeshPro if not assigned
@@ -31,77 +36,45 @@ public class TurbidityDisplay : MonoBehaviour
                 return;
             }
         }
-        
-        // Validate target jar
+
         if (targetJar == null)
         {
             Debug.LogError("[TurbidityDisplay] No target jar assigned! Please assign a jar in the inspector.");
             enabled = false;
             return;
         }
-        
-        // Try to find JarReaction component (alum jar)
+
+        // Try to find JarReaction or pHJar
         alumJar = targetJar.GetComponent<JarReaction>();
-        
-        // Try to find pHJar component using reflection (since we don't have the exact class)
-        if (alumJar == null)
-        {
-            pHJarComponent = targetJar.GetComponent("pHJar") as MonoBehaviour;
-        }
-        
-        // Check if we found either component
-        if (alumJar == null && pHJarComponent == null)
+        phJar = targetJar.GetComponent<pHJar>();
+
+        if (alumJar == null && phJar == null)
         {
             Debug.LogError($"[TurbidityDisplay] Target jar '{targetJar.name}' has neither JarReaction nor pHJar component!");
             enabled = false;
             return;
         }
-        
-        // Log success
+
         string jarType = alumJar != null ? "JarReaction (alum)" : "pHJar";
         Debug.Log($"[TurbidityDisplay] Connected to {targetJar.name} ({jarType})");
     }
-    
+
     void Update()
     {
-        float turbidity = GetTurbidity();
-        
-        // Convert to percentage (turbidity is 0-1, display as 0-100%)
-        float turbidityPercent = turbidity * 100f;
-        
-        // Format the string
+        float displayValue = 0f;
+
+        // If using new pHJar, call its NTU method directly
+        if (phJar != null)
+        {
+            displayValue = phJar.GetTurbidityNTU();
+        }
+        else if (alumJar != null)
+        {
+            // JarReaction only reports normalized turbidity
+            displayValue = alumJar.GetTurbidityNormalized() * initialTurbidityNTU;
+        }
+
         string formatString = "F" + decimalPlaces;
-        textMesh.text = prefix + turbidityPercent.ToString(formatString) + suffix;
-    }
-    
-    float GetTurbidity()
-    {
-        // Get from alum jar
-        if (alumJar != null)
-        {
-            return alumJar.GetTurbidityNormalized();
-        }
-        
-        // Get from pH jar using reflection
-        if (pHJarComponent != null)
-        {
-            // Try to get the turbidity field/property
-            var turbidityField = pHJarComponent.GetType().GetField("turbidity");
-            if (turbidityField != null)
-            {
-                return (float)turbidityField.GetValue(pHJarComponent);
-            }
-            
-            // Try GetTurbidityNormalized method
-            var method = pHJarComponent.GetType().GetMethod("GetTurbidityNormalized");
-            if (method != null)
-            {
-                return (float)method.Invoke(pHJarComponent, null);
-            }
-            
-            Debug.LogWarning("[TurbidityDisplay] Could not find turbidity value on pHJar component!");
-        }
-        
-        return 0f;
+        textMesh.text = prefix + displayValue.ToString(formatString) + suffix;
     }
 }
