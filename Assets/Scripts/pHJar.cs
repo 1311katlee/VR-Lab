@@ -181,8 +181,8 @@ public class pHJar : MonoBehaviour
         var emission = flocParticleSystem.emission;
 
         // Gaussian-like efficiency curve centered near pH 6.5-7.0
-        float sigma = 1.5f;
-        float optimalPH = 6.5f;
+        float sigma = 3.5f;
+        float optimalPH = 6.25f;
         currentEfficiency = Mathf.Exp(-Mathf.Pow((CurrentPH - optimalPH) / sigma, 2f));
 
         // Floc growth occurs while mixing phases are active
