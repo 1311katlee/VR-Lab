@@ -2969,9 +2969,9 @@ MonoBehaviour:
   flocParticleSystem: {fileID: 431449703}
   waterRenderer: {fileID: 1834465153}
   phText: {fileID: 924158843}
-  useMeshParticles: 0
+  useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
-  particleSize: 0.08
+  particleSize: 0.04
   particleLifetime: 4
   rateScale: 100
   emissionThreshold: 1
@@ -5665,9 +5665,9 @@ MonoBehaviour:
   flocParticleSystem: {fileID: 247026423}
   waterRenderer: {fileID: 1078043272}
   phText: {fileID: 1579789822}
-  useMeshParticles: 0
+  useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
-  particleSize: 0.08
+  particleSize: 0.04
   particleLifetime: 4
   rateScale: 100
   emissionThreshold: 1
@@ -8619,9 +8619,9 @@ MonoBehaviour:
   flocParticleSystem: {fileID: 646370911}
   waterRenderer: {fileID: 675215682}
   phText: {fileID: 1237560040}
-  useMeshParticles: 0
+  useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
-  particleSize: 0.08
+  particleSize: 0.04
   particleLifetime: 4
   rateScale: 100
   emissionThreshold: 1
@@ -10279,9 +10279,9 @@ MonoBehaviour:
   flocParticleSystem: {fileID: 1739992082}
   waterRenderer: {fileID: 645220446}
   phText: {fileID: 2063041150}
-  useMeshParticles: 0
+  useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
-  particleSize: 0.08
+  particleSize: 0.04
   particleLifetime: 4
   rateScale: 100
   emissionThreshold: 1
@@ -19304,9 +19304,9 @@ MonoBehaviour:
   flocParticleSystem: {fileID: 1619660152}
   waterRenderer: {fileID: 1048969751}
   phText: {fileID: 1037779175}
-  useMeshParticles: 0
+  useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
-  particleSize: 0.08
+  particleSize: 0.04
   particleLifetime: 4
   rateScale: 100
   emissionThreshold: 1
@@ -19870,9 +19870,9 @@ MonoBehaviour:
   flocParticleSystem: {fileID: 2064179825}
   waterRenderer: {fileID: 3703198}
   phText: {fileID: 1962638043}
-  useMeshParticles: 0
+  useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
-  particleSize: 0.08
+  particleSize: 0.04
   particleLifetime: 4
   rateScale: 100
   emissionThreshold: 1
