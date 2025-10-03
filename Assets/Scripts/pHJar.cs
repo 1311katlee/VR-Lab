@@ -1,5 +1,5 @@
 // pHJar.cs
-// Updated with proper turbidity reduction and better sludge spawning
+// Updated with proper turbidity reduction and corrected water color gradient
 
 using UnityEngine;
 using TMPro;
@@ -22,6 +22,12 @@ public class pHJar : MonoBehaviour
     [Header("Initial Water Quality")]
     public float initialTurbidityNTU = 100f;
     public float minimumFinalNTU = 4f;
+
+    [Header("Water Color Gradient")]
+    [Tooltip("Color of clean water (low turbidity)")]
+    public Color cleanWaterColor = new Color(0.85f, 0.9f, 1.0f, 0.25f);
+    [Tooltip("Color of turbid water (high turbidity)")]
+    public Color turbidWaterColor = new Color(0.5f, 0.45f, 0.35f, 0.95f);
 
     [Header("Reaction Params (tweak)")]
     public float growthRate = 0.6f;
@@ -124,6 +130,7 @@ public class pHJar : MonoBehaviour
     void Start()
     {
         UpdatePHText();
+        UpdateVisuals(); // Initialize water color
     }
 
     void Update()
@@ -309,9 +316,11 @@ public class pHJar : MonoBehaviour
         if (waterRenderer != null)
         {
             Material mat = waterRenderer.material;
-            Color clean = new Color(0.7f, 0.7f, 0.85f, 0.6f);
-            Color cloudy = new Color(0.2f, 0.4f, 0.9f, 0.8f);
-            mat.SetColor("_BaseColor", Color.Lerp(clean, cloudy, turbidity));
+            
+            // CORRECTED: Low turbidity (clean) = cleanWaterColor, High turbidity (dirty) = turbidWaterColor
+            // turbidity ranges from 0 (cleanest) to 1 (dirtiest)
+            Color currentColor = Color.Lerp(cleanWaterColor, turbidWaterColor, turbidity);
+            mat.SetColor("_BaseColor", currentColor);
         }
 
         UpdatePHText();
@@ -345,5 +354,6 @@ public class pHJar : MonoBehaviour
             flocParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
         UpdatePHText();
+        UpdateVisuals(); // Update water color on reset
     }
 }

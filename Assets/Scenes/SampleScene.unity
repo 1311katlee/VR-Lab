@@ -2795,6 +2795,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214913372}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &216411100 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5032799134216508891, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 1220679285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &238957295
 Mesh:
   m_ObjectHideFlags: 0
@@ -2996,6 +3001,11 @@ MonoBehaviour:
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 9018533377268208009, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
   m_PrefabInstance: {fileID: 1796249419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &252697166 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5032799134216508891, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 300578576}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &256075279
 GameObject:
@@ -3356,12 +3366,20 @@ MonoBehaviour:
   slowMixDuration: 1200
   initialTurbidityNTU: 100
   minimumFinalNTU: 4
+  cleanWaterColor: {r: 0.85, g: 0.9, b: 1, a: 0.25}
+  turbidWaterColor: {r: 0.5, g: 0.45, b: 0.35, a: 0.95}
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 431449703}
   waterRenderer: {fileID: 1834465153}
   phText: {fileID: 924158843}
+  sludgeSpawnPoint: {fileID: 310305669}
+  settledFlocPrefab: {fileID: 6906169925853859566, guid: e83455bf23de96147bc349b862a031d1, type: 3}
+  sludgeSpawnRadius: 0.1
+  minSludgePiecesPerSpawn: 2
+  maxSludgePiecesPerSpawn: 5
+  baseSludgeScale: 0.015
   useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.04
@@ -3848,6 +3866,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1739992079}
   m_SourcePrefab: {fileID: 100100000, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+--- !u!4 &310305669 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5032799134216508891, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 676765268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &317492494
 GameObject:
   m_ObjectHideFlags: 0
@@ -5241,6 +5264,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7561190170130050768, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
   m_PrefabInstance: {fileID: 414399576}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &418103713 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5032799134216508891, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 1619660150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &423289238
 GameObject:
   m_ObjectHideFlags: 0
@@ -6354,12 +6382,20 @@ MonoBehaviour:
   slowMixDuration: 1200
   initialTurbidityNTU: 100
   minimumFinalNTU: 4
+  cleanWaterColor: {r: 0.85, g: 0.9, b: 1, a: 0.25}
+  turbidWaterColor: {r: 0.5, g: 0.45, b: 0.35, a: 0.95}
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 247026423}
   waterRenderer: {fileID: 1078043272}
   phText: {fileID: 1579789822}
+  sludgeSpawnPoint: {fileID: 1323039477}
+  settledFlocPrefab: {fileID: 6906169925853859566, guid: e83455bf23de96147bc349b862a031d1, type: 3}
+  sludgeSpawnRadius: 0.1
+  minSludgePiecesPerSpawn: 2
+  maxSludgePiecesPerSpawn: 5
+  baseSludgeScale: 0.015
   useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.04
@@ -9948,12 +9984,20 @@ MonoBehaviour:
   slowMixDuration: 1200
   initialTurbidityNTU: 100
   minimumFinalNTU: 4
+  cleanWaterColor: {r: 0.85, g: 0.9, b: 1, a: 0.25}
+  turbidWaterColor: {r: 0.5, g: 0.45, b: 0.35, a: 0.95}
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 646370911}
   waterRenderer: {fileID: 675215682}
   phText: {fileID: 1237560040}
+  sludgeSpawnPoint: {fileID: 2108614197}
+  settledFlocPrefab: {fileID: 6906169925853859566, guid: e83455bf23de96147bc349b862a031d1, type: 3}
+  sludgeSpawnRadius: 0.1
+  minSludgePiecesPerSpawn: 2
+  maxSludgePiecesPerSpawn: 5
+  baseSludgeScale: 0.015
   useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.04
@@ -11943,12 +11987,20 @@ MonoBehaviour:
   slowMixDuration: 1200
   initialTurbidityNTU: 100
   minimumFinalNTU: 4
+  cleanWaterColor: {r: 0.85, g: 0.9, b: 1, a: 0.25}
+  turbidWaterColor: {r: 0.5, g: 0.45, b: 0.35, a: 0.95}
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 1739992082}
   waterRenderer: {fileID: 645220446}
   phText: {fileID: 2063041150}
+  sludgeSpawnPoint: {fileID: 252697166}
+  settledFlocPrefab: {fileID: 6906169925853859566, guid: e83455bf23de96147bc349b862a031d1, type: 3}
+  sludgeSpawnRadius: 0.1
+  minSludgePiecesPerSpawn: 2
+  maxSludgePiecesPerSpawn: 5
+  baseSludgeScale: 0.015
   useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.04
@@ -18431,6 +18483,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &1323039477 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5032799134216508891, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 1796249419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1353950563 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7561190170130050768, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
@@ -21933,6 +21990,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9018533377268208009, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+      propertyPath: InitialModule.gravitySource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018533377268208009, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018533377268208009, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 583039518}
@@ -22031,12 +22096,20 @@ MonoBehaviour:
   slowMixDuration: 1200
   initialTurbidityNTU: 100
   minimumFinalNTU: 4
+  cleanWaterColor: {r: 0.85, g: 0.9, b: 1, a: 0.25}
+  turbidWaterColor: {r: 0.5, g: 0.45, b: 0.35, a: 0.95}
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 1619660152}
   waterRenderer: {fileID: 1048969751}
   phText: {fileID: 1037779175}
+  sludgeSpawnPoint: {fileID: 418103713}
+  settledFlocPrefab: {fileID: 6906169925853859566, guid: e83455bf23de96147bc349b862a031d1, type: 3}
+  sludgeSpawnRadius: 0.1
+  minSludgePiecesPerSpawn: 2
+  maxSludgePiecesPerSpawn: 5
+  baseSludgeScale: 0.015
   useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.04
@@ -22597,12 +22670,20 @@ MonoBehaviour:
   slowMixDuration: 1200
   initialTurbidityNTU: 100
   minimumFinalNTU: 4
+  cleanWaterColor: {r: 0.85, g: 0.9, b: 1, a: 0.25}
+  turbidWaterColor: {r: 0.5, g: 0.45, b: 0.35, a: 0.95}
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 2064179825}
   waterRenderer: {fileID: 3703198}
   phText: {fileID: 1962638043}
+  sludgeSpawnPoint: {fileID: 216411100}
+  settledFlocPrefab: {fileID: 6906169925853859566, guid: e83455bf23de96147bc349b862a031d1, type: 3}
+  sludgeSpawnRadius: 0.1
+  minSludgePiecesPerSpawn: 2
+  maxSludgePiecesPerSpawn: 5
+  baseSludgeScale: 0.015
   useMeshParticles: 1
   particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.04
@@ -28422,6 +28503,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076473296}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2108614197 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5032799134216508891, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 2139672999}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2118498712
 GameObject:
   m_ObjectHideFlags: 0
