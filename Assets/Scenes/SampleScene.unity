@@ -275,6 +275,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869842}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3703198 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 1220679285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &10007323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,7 +1070,7 @@ PrefabInstance:
       objectReference: {fileID: 1393732425}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -2454,11 +2459,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rpmManager: {fileID: 1775231983}
---- !u!23 &212380409 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
-  m_PrefabInstance: {fileID: 676765268}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &214913372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,14 +2961,16 @@ MonoBehaviour:
   slowMixMaxRPM: 50
   rapidMixDuration: 120
   slowMixDuration: 1200
+  initialTurbidityNTU: 100
+  minimumFinalNTU: 4
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 431449703}
-  waterRenderer: {fileID: 212380409}
+  waterRenderer: {fileID: 1834465153}
   phText: {fileID: 924158843}
   useMeshParticles: 0
-  particleMaterial: {fileID: 0}
+  particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.08
   particleLifetime: 4
   rateScale: 100
@@ -3379,7 +3381,7 @@ PrefabInstance:
       objectReference: {fileID: 1308243689}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -5655,14 +5657,16 @@ MonoBehaviour:
   slowMixMaxRPM: 50
   rapidMixDuration: 120
   slowMixDuration: 1200
+  initialTurbidityNTU: 100
+  minimumFinalNTU: 4
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 247026423}
-  waterRenderer: {fileID: 1696692800}
+  waterRenderer: {fileID: 1078043272}
   phText: {fileID: 1579789822}
   useMeshParticles: 0
-  particleMaterial: {fileID: 0}
+  particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.08
   particleLifetime: 4
   rateScale: 100
@@ -5981,9 +5985,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1432031416}
     m_Modifications:
     - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: suffix
+      value: ' NTU'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: targetJar
       value: 
       objectReference: {fileID: 292020654}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: displayMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7561190170130050768, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6088,11 +6100,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
---- !u!23 &543488408 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
-  m_PrefabInstance: {fileID: 1220679285}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &543726342
 GameObject:
   m_ObjectHideFlags: 0
@@ -6291,9 +6298,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1432031416}
     m_Modifications:
     - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: suffix
+      value: ' NTU'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: targetJar
       value: 
       objectReference: {fileID: 745470761}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: displayMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7561190170130050768, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7252,6 +7267,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639111231}
   m_CullTransparentMesh: 1
+--- !u!23 &645220446 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 300578576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &646370906 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7195199812079191992, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
@@ -7730,7 +7750,7 @@ PrefabInstance:
       objectReference: {fileID: 654568680}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -7793,6 +7813,11 @@ Transform:
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 9018533377268208009, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
   m_PrefabInstance: {fileID: 670027510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &675215682 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 2139672999}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &676765268
 PrefabInstance:
@@ -7900,7 +7925,7 @@ PrefabInstance:
       objectReference: {fileID: 929979661}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -8492,7 +8517,7 @@ PrefabInstance:
       objectReference: {fileID: 181618595}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -8586,14 +8611,16 @@ MonoBehaviour:
   slowMixMaxRPM: 50
   rapidMixDuration: 120
   slowMixDuration: 1200
+  initialTurbidityNTU: 100
+  minimumFinalNTU: 4
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 646370911}
-  waterRenderer: {fileID: 985549025}
+  waterRenderer: {fileID: 675215682}
   phText: {fileID: 1237560040}
   useMeshParticles: 0
-  particleMaterial: {fileID: 0}
+  particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.08
   particleLifetime: 4
   rateScale: 100
@@ -9810,7 +9837,7 @@ PrefabInstance:
       objectReference: {fileID: 187645893}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -10244,14 +10271,16 @@ MonoBehaviour:
   slowMixMaxRPM: 50
   rapidMixDuration: 120
   slowMixDuration: 1200
+  initialTurbidityNTU: 100
+  minimumFinalNTU: 4
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 1739992082}
-  waterRenderer: {fileID: 1240648645}
+  waterRenderer: {fileID: 645220446}
   phText: {fileID: 2063041150}
   useMeshParticles: 0
-  particleMaterial: {fileID: 0}
+  particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.08
   particleLifetime: 4
   rateScale: 100
@@ -10259,11 +10288,6 @@ MonoBehaviour:
   rpmManager: {fileID: 1814812676}
   simulationTimeScale: 1
   CurrentPH: 5.5
---- !u!23 &899654592 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
-  m_PrefabInstance: {fileID: 1619660150}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &904546652
 GameObject:
   m_ObjectHideFlags: 0
@@ -11747,11 +11771,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983327466}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &985549025 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
-  m_PrefabInstance: {fileID: 2139672999}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &986561564
 GameObject:
   m_ObjectHideFlags: 0
@@ -12810,6 +12829,11 @@ Transform:
   - {fileID: 913346567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1048969751 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 1619660150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1054951061
 GameObject:
   m_ObjectHideFlags: 0
@@ -13169,6 +13193,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!23 &1078043272 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 1796249419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1083886043
 GameObject:
   m_ObjectHideFlags: 0
@@ -13371,9 +13400,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1432031416}
     m_Modifications:
     - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: suffix
+      value: ' NTU'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: targetJar
       value: 
       objectReference: {fileID: 1696713296}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: displayMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7561190170130050768, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14538,7 +14575,7 @@ PrefabInstance:
       objectReference: {fileID: 1460983271}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -15147,11 +15184,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!23 &1240648645 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
-  m_PrefabInstance: {fileID: 300578576}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1249734771
 GameObject:
   m_ObjectHideFlags: 0
@@ -18279,9 +18311,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1432031416}
     m_Modifications:
     - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: suffix
+      value: ' NTU'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: targetJar
       value: 
       objectReference: {fileID: 501292409}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: displayMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7561190170130050768, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -19137,7 +19177,7 @@ PrefabInstance:
       objectReference: {fileID: 1009805660}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -19256,14 +19296,16 @@ MonoBehaviour:
   slowMixMaxRPM: 50
   rapidMixDuration: 120
   slowMixDuration: 1200
+  initialTurbidityNTU: 100
+  minimumFinalNTU: 4
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 1619660152}
-  waterRenderer: {fileID: 899654592}
+  waterRenderer: {fileID: 1048969751}
   phText: {fileID: 1037779175}
   useMeshParticles: 0
-  particleMaterial: {fileID: 0}
+  particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.08
   particleLifetime: 4
   rateScale: 100
@@ -19790,11 +19832,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682554350}
   m_CullTransparentMesh: 1
---- !u!23 &1696692800 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
-  m_PrefabInstance: {fileID: 1796249419}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1696713296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4662148318433859677, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
@@ -19825,14 +19862,16 @@ MonoBehaviour:
   slowMixMaxRPM: 50
   rapidMixDuration: 120
   slowMixDuration: 1200
+  initialTurbidityNTU: 100
+  minimumFinalNTU: 4
   growthRate: 0.6
   shearFactor: 0.01
   settlingThreshold: 0.5
   flocParticleSystem: {fileID: 2064179825}
-  waterRenderer: {fileID: 543488408}
+  waterRenderer: {fileID: 3703198}
   phText: {fileID: 1962638043}
   useMeshParticles: 0
-  particleMaterial: {fileID: 0}
+  particleMaterial: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f, type: 3}
   particleSize: 0.08
   particleLifetime: 4
   rateScale: 100
@@ -20196,9 +20235,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1432031416}
     m_Modifications:
     - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: suffix
+      value: ' NTU'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: targetJar
       value: 
       objectReference: {fileID: 874948227}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: displayMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7561190170130050768, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -21892,7 +21939,7 @@ PrefabInstance:
       objectReference: {fileID: 1072835618}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -21963,6 +22010,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1432031416}
     m_Modifications:
     - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: suffix
+      value: ' NTU'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -21970,6 +22021,10 @@ PrefabInstance:
       propertyPath: targetJar
       value: 
       objectReference: {fileID: 1378091394}
+    - target: {fileID: 6361608217250532732, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
+      propertyPath: displayMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7561190170130050768, guid: 106ee4d185d54f343a364ffb50b76c8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -22172,7 +22227,7 @@ PrefabInstance:
       objectReference: {fileID: 1756927754}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -22435,6 +22490,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828971684}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1834465153 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1296167096774570177, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
+  m_PrefabInstance: {fileID: 676765268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1838791032
 GameObject:
   m_ObjectHideFlags: 0
@@ -25465,7 +25525,7 @@ PrefabInstance:
       objectReference: {fileID: 1282851610}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
@@ -25630,7 +25690,7 @@ PrefabInstance:
       objectReference: {fileID: 1302430986}
     - target: {fileID: 5029987204782563298, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: m_VersionIndex
-      value: 5962
+      value: 5965
       objectReference: {fileID: 0}
     - target: {fileID: 5841736918799576093, guid: 9c2d4d04074c6f042b8a4ff2f60b7803, type: 3}
       propertyPath: rpmManager
