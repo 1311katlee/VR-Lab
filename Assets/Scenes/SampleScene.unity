@@ -680,9 +680,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1603807421}
     m_Modifications:
+    - target: {fileID: 295005335043280958, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
+      propertyPath: m_Name
+      value: PipetteText3D - 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4442050304703237499, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_Name
-      value: Pipette1 (2)
+      value: pipette 3
       objectReference: {fileID: 0}
     - target: {fileID: 7413097943528480300, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1548,7 +1552,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4442050304703237499, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_Name
-      value: Pipette1 (3)
+      value: pipette 1
       objectReference: {fileID: 0}
     - target: {fileID: 7413097943528480300, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3282,9 +3286,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1603807421}
     m_Modifications:
+    - target: {fileID: 295005335043280958, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
+      propertyPath: m_Name
+      value: PipetteText3D - 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4442050304703237499, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_Name
-      value: Pipette1 (1)
+      value: pipette 2
       objectReference: {fileID: 0}
     - target: {fileID: 7413097943528480300, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19500,9 +19508,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1603807421}
     m_Modifications:
+    - target: {fileID: 295005335043280958, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
+      propertyPath: m_Name
+      value: PipetteText3D - 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4442050304703237499, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_Name
-      value: Pipette1 (5)
+      value: pipette 6
       objectReference: {fileID: 0}
     - target: {fileID: 7413097943528480300, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21639,11 +21651,11 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1040870172}
-  - {fileID: 1542771063}
-  - {fileID: 476688958}
   - {fileID: 1876827185}
+  - {fileID: 1040870172}
+  - {fileID: 476688958}
   - {fileID: 712386029}
+  - {fileID: 1542771063}
   - {fileID: 1958271631}
   m_Father: {fileID: 1789302004}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24566,9 +24578,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1603807421}
     m_Modifications:
+    - target: {fileID: 295005335043280958, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
+      propertyPath: m_Name
+      value: PipetteText3D - 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4442050304703237499, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_Name
-      value: Pipette1 (4)
+      value: pipette 4
       objectReference: {fileID: 0}
     - target: {fileID: 7413097943528480300, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29131,9 +29147,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1603807421}
     m_Modifications:
+    - target: {fileID: 295005335043280958, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
+      propertyPath: m_Name
+      value: PipetteText3D - 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4442050304703237499, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_Name
-      value: Pipette1
+      value: pipette 5
       objectReference: {fileID: 0}
     - target: {fileID: 5655387612456607244, guid: 9de9f2ac647eb4d438c1456afe21302e, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
