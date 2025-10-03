@@ -1,5 +1,5 @@
 // pHJar.cs
-// Updated with proper turbidity reduction model
+// Updated with proper turbidity reduction and better sludge spawning
 
 using UnityEngine;
 using TMPro;
@@ -20,8 +20,8 @@ public class pHJar : MonoBehaviour
     public float slowMixDuration = 1200f;
 
     [Header("Initial Water Quality")]
-    public float initialTurbidityNTU = 100f;  // Raw water turbidity
-    public float minimumFinalNTU = 4f;        // Best achievable turbidity
+    public float initialTurbidityNTU = 100f;
+    public float minimumFinalNTU = 4f;
 
     [Header("Reaction Params (tweak)")]
     public float growthRate = 0.6f;
@@ -32,6 +32,14 @@ public class pHJar : MonoBehaviour
     public ParticleSystem flocParticleSystem;
     public Renderer waterRenderer;
     public TMP_Text phText;
+
+    [Header("Sludge Spawning")]
+    public Transform sludgeSpawnPoint;
+    public GameObject settledFlocPrefab;
+    public float sludgeSpawnRadius = 0.1f;
+    public int minSludgePiecesPerSpawn = 2;
+    public int maxSludgePiecesPerSpawn = 5;
+    public float baseSludgeScale = 0.015f;
 
     [Header("Particle Renderer Options (optional)")]
     public bool useMeshParticles = false;
@@ -49,8 +57,9 @@ public class pHJar : MonoBehaviour
 
     // Internal state
     private float flocSize = 0f;
-    private float turbidity = 1f;  // Start at 1.0 (100% of initial turbidity)
+    private float turbidity = 1f;
     private float currentEfficiency = 0f;
+    private float settledMass = 0f;
 
     // Jar Test Phase Tracking
     public enum JarTestPhase { Idle, RapidMix, SlowMix, Settling }
@@ -180,8 +189,8 @@ public class pHJar : MonoBehaviour
         var main = flocParticleSystem.main;
         var emission = flocParticleSystem.emission;
 
-        // Gaussian-like efficiency curve centered near pH 6.5-7.0
-        float sigma = 3.5f;
+        // Gaussian-like efficiency curve centered near pH 6.5
+        float sigma = 2.5f;
         float optimalPH = 6.25f;
         currentEfficiency = Mathf.Exp(-Mathf.Pow((CurrentPH - optimalPH) / sigma, 2f));
 
@@ -196,20 +205,23 @@ public class pHJar : MonoBehaviour
         if (CurrentRPM > rapidMixMaxRPM)
             flocSize = Mathf.Max(0f, flocSize - shearFactor * dt);
 
-        // TURBIDITY REDUCTION MODEL:
-        // High efficiency -> low final turbidity
-        // turbidity represents: current_NTU / initial_NTU
-        
+        // SLUDGE SETTLING during settling phase
+        if (currentPhase == JarTestPhase.Settling && flocSize > 0.1f)
+        {
+            // Convert flocs to settled sludge during settling
+            float settlingRate = flocSize * currentEfficiency * dt * 0.5f;
+            SpawnSettledSludge(settlingRate);
+            flocSize = Mathf.Max(0f, flocSize - settlingRate);
+        }
+
+        // TURBIDITY REDUCTION MODEL
         if (currentPhase == JarTestPhase.Settling)
         {
-            // During settling, turbidity drops based on efficiency
-            // Target turbidity = (minimumFinalNTU + (1 - efficiency) * (initial - minimum)) / initial
             float targetFraction = (minimumFinalNTU + (1f - currentEfficiency) * (initialTurbidityNTU - minimumFinalNTU)) / initialTurbidityNTU;
             turbidity = Mathf.Lerp(turbidity, targetFraction, dt * 0.1f);
         }
         else if (currentPhase == JarTestPhase.RapidMix || currentPhase == JarTestPhase.SlowMix)
         {
-            // During mixing, turbidity gradually moves toward target
             float targetFraction = (minimumFinalNTU + (1f - currentEfficiency) * (initialTurbidityNTU - minimumFinalNTU)) / initialTurbidityNTU;
             turbidity = Mathf.Lerp(turbidity, targetFraction, dt * 0.02f);
         }
@@ -220,7 +232,7 @@ public class pHJar : MonoBehaviour
         main.startLifetime = particleLifetime;
         main.startSize = particleSize;
 
-        // Emission rate driven by floc activity (not turbidity)
+        // Emission rate driven by floc activity
         float baseRate = 0f;
         float rate = baseRate + (currentEfficiency * rateScale * flocSize);
         emission.rateOverTime = new ParticleSystem.MinMaxCurve(rate);
@@ -253,6 +265,45 @@ public class pHJar : MonoBehaviour
         Debug.Log($"[pHJar] {name} Phase={currentPhase}, pH={CurrentPH:F1}, Eff={currentEfficiency:F2}, Floc={flocSize:F2}, NTU={currentNTU:F1}");
     }
 
+    void SpawnSettledSludge(float amount)
+    {
+        if (amount <= 0f || settledFlocPrefab == null || sludgeSpawnPoint == null) return;
+        
+        settledMass += amount;
+        
+        // Spawn multiple small pieces instead of one large sphere
+        if (settledMass > 0.03f)
+        {
+            // Spawn 2-5 small sludge pieces randomly distributed
+            int piecesToSpawn = Random.Range(minSludgePiecesPerSpawn, maxSludgePiecesPerSpawn + 1);
+            float massPerPiece = settledMass / piecesToSpawn;
+            
+            for (int i = 0; i < piecesToSpawn; i++)
+            {
+                // Random position within spawn radius (only X and Z, not Y)
+                Vector2 randomCircle = Random.insideUnitCircle * sludgeSpawnRadius * 2f;
+                Vector3 spawnOffset = new Vector3(randomCircle.x, 0f, randomCircle.y);
+                Vector3 spawnPos = sludgeSpawnPoint.position + spawnOffset;
+                
+                // Random rotation
+                Quaternion rot = Quaternion.Euler(
+                    Random.Range(-10f, 10f),
+                    Random.Range(0f, 360f),
+                    Random.Range(-10f, 10f)
+                );
+                
+                GameObject sludge = Instantiate(settledFlocPrefab, spawnPos, rot, sludgeSpawnPoint);
+                
+                // Varied sizes for visual interest
+                float baseScale = baseSludgeScale + massPerPiece * 0.02f;
+                float variation = Random.Range(0.8f, 1.2f);
+                sludge.transform.localScale = Vector3.one * baseScale * variation;
+            }
+            
+            settledMass = 0f;
+        }
+    }
+
     void UpdateVisuals()
     {
         if (waterRenderer != null)
@@ -283,7 +334,9 @@ public class pHJar : MonoBehaviour
     public void ResetJar()
     {
         flocSize = 0f;
-        turbidity = 1f;  // Reset to 100% (full initial turbidity)
+        turbidity = 1f;
+        settledMass = 0f;
+        
         if (flocParticleSystem != null)
         {
             var emission = flocParticleSystem.emission;
